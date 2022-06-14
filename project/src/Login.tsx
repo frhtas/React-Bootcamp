@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "./Services";
 import { encrypt } from "./Util";
+import { Helmet } from "react-helmet";
 
 function Login() {
     // user navigate
@@ -74,6 +75,10 @@ function Login() {
 
     return (
         <Container>
+            <Helmet>
+                <title>User Login</title>
+                <meta name="description" content="Login Page" />
+            </Helmet>
             <Grid container>
                 <Grid item xs={12} sm={12} md={4} lg={4} xl={4}></Grid>
                 <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
@@ -87,7 +92,10 @@ function Login() {
                             <TextField onChange={(evt) => setPassword(evt.target.value)} type="password" id="password" variant="outlined" label="Password" required />
                         </FormControl>
                         <FormControl>
-                            <FormControlLabel control={<Checkbox onChange={() => setRemember(!remember)} defaultChecked={remember} value="remember" color="primary" />} label="Remember Me!"></FormControlLabel>
+                            <FormControlLabel
+                                control={<Checkbox onChange={() => setRemember(!remember)} defaultChecked={remember} value="remember" color="primary" />}
+                                label="Remember Me!"
+                            ></FormControlLabel>
                         </FormControl>
                         <FormControl fullWidth margin="normal">
                             <Button type="submit" variant="contained" color="primary" size="large">
